@@ -10,7 +10,7 @@ resource "aws_vpc" "vpc1" {
 resource "aws_subnet" "newsub" {
   vpc_id            = aws_vpc.vpc1.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-2a"
+  availability_zone = "us-east-1a"
 }
 
 resource "aws_network_interface" "foo" {
@@ -37,6 +37,11 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "ubuntu" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
+  
+   network_interface {
+    network_interface_id = aws_network_interface.foo.id
+    device_index         = 0
+  }
 
   tags = {
     Name = var.instance_name
