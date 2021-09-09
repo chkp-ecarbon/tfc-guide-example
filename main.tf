@@ -3,7 +3,7 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_vpc" "VPC1" {
+resource "aws_vpc" "vpc1" {
   cidr_block = "10.0.0.0/16"
 }
 
