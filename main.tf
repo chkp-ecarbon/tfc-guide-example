@@ -7,14 +7,14 @@ resource "aws_vpc" "vpc1" {
   cidr_block = "10.0.0.0/16"
 }
 
-resource "aws_subnet" "my_subnet" {
+resource "aws_subnet" "newsub" {
   vpc_id            = aws_vpc.vpc1.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-2a"
 }
 
 resource "aws_network_interface" "foo" {
-  subnet_id   = aws_subnet.my_subnet.id
+  subnet_id   = aws_subnet.newsub.id
   private_ips = ["10.0.1.100"]
 }
   
