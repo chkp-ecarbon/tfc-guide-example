@@ -3,12 +3,12 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_vpc" "main" {
+resource "aws_vpc" "VPC1" {
   cidr_block = "10.0.0.0/16"
 }
 
 resource "aws_subnet" "my_subnet" {
-  vpc_id            = aws_vpc.my_vpc.id
+  vpc_id            = aws_vpc.vpc1.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-2a"
 }
