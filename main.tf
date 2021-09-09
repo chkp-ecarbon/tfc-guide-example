@@ -7,6 +7,17 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 
+resource "aws_subnet" "my_subnet" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "us-east-2a"
+}
+
+resource "aws_network_interface" "foo" {
+  subnet_id   = aws_subnet.my_subnet.id
+  private_ips = ["10.0.1.100"]
+}
+  
 data "aws_ami" "ubuntu" {
   most_recent = true
 
