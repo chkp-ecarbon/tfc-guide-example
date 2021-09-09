@@ -1,11 +1,7 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "3.57.0"
-      region = var.region
-    }
-  }
+# Configure the AWS Provider
+provider "aws" {
+  version = "~> 3.0"
+  region  = var.region
 }
 
 data "aws_ami" "ubuntu" {
